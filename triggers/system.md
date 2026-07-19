@@ -12,6 +12,30 @@ compiles to Galaxy script (`MapScript.galaxy` plus `TriggerLibs/*.galaxy`).
 - **Action**: side effects executed when conditions hold (create units, issue
   orders, display messages, modify bank, etc.).
 
+### Parameter types
+
+Each ECA parameter has a declared type. Common parameter value sources:
+
+- **Preset**: enumerated constants from `c_*` (e.g. `c_unitCountAlive`).
+- **Variable**: a global or local variable declared in the GUI.
+- **Function**: another ECA returning a value (nested as a sub-parameter).
+- **Custom Script**: inline Galaxy expression. Used when the GUI lacks a wrapper.
+- **Value**: literal numbers, strings, fixed-point.
+
+Sub-parameters (parameters of parameters) nest recursively; the GUI renders them
+as indented tree nodes. Each compiled parameter is a Galaxy function call.
+
+### Custom Script elements
+
+Insert raw Galaxy in any parameter slot via "Custom Script" element type. At
+the top level, **Custom Script** action elements let authors embed arbitrary
+statements between GUI actions. They compile verbatim into `MapScript.galaxy`.
+
+Custom scripts can `include "TriggerLibs/<name>"` to pull in external Galaxy
+files imported via the Importer module. Avoid `_h` suffix — the include directive
+loads both the declaration header and the implementation when given the bare
+basename.
+
 ## GUI vs custom script
 
 - The GUI covers approximately 99.9% of native functionality. Custom script
@@ -35,6 +59,50 @@ sets the `TriggerLibs Identifier` (识别符) field on `SC2 Gameplay Defaults`:
 The library ID is the file's basename (without `_h` / `.galaxy`). Loaded
 libraries' `Init` functions are called during map init.
 
+A library file (`Lib<Name>.galaxy`) follows this pattern:
+
+```galaxy
+include "TriggerLibs/NativeLib"
+include "LibCOMU"
+include "Lib<Name>_h"
+
+// External Library Initialization
+void lib<Name>_InitLibraries () {
+    libNtve_InitVariables();
+    libCOMU_InitVariables();
+}
+
+// Trigger function declarations (one per trigger in the GUI)
+bool lib<Name>_gt_<TriggerName>_Func (bool testConds, bool runActions) {
+    if (!runActions) { return true; }
+    // Actions
+    return true;
+}
+
+void lib<Name>_gt_<TriggerName>_Init () {
+    lib<Name>_gt_<TriggerName> = TriggerCreate("lib<Name>_gt_<TriggerName>_Func");
+    TriggerAddEventMapInit(lib<Name>_gt_<TriggerName>);
+}
+
+void lib<Name>_InitTriggers () {
+    lib<Name>_gt_<TriggerName>_Init();
+}
+
+// Library Initialization (idempotent)
+bool lib<Name>_InitLib_completed = false;
+
+void lib<Name>_InitLib () {
+    if (lib<Name>_InitLib_completed) { return; }
+    lib<Name>_InitLib_completed = true;
+    lib<Name>_InitLibraries();
+    lib<Name>_InitTriggers();
+}
+```
+
+This pattern is used by all official Blizzard libraries (`LibCOMI`, `LibCOMU`,
+`LibCOOC`, `LibCOUI`, `Lib9B7202B2`, etc.). The `_InitLib` function is the
+entrypoint called by the engine during map init.
+
 ## Initialization order
 
 1. Mod dependencies load in declared order (innermost first).
@@ -45,6 +113,9 @@ libraries' `Init` functions are called during map init.
 
 Order within a single init phase is non-deterministic across triggers unless
 explicitly sequenced via `TriggerEnable` / `TriggerExecute`.
+
+The compiled `MapScript.galaxy` calls these stages in this fixed order; you
+cannot reorder them from the GUI.
 
 ## Common pitfalls
 
@@ -57,6 +128,12 @@ explicitly sequenced via `TriggerEnable` / `TriggerExecute`.
   as local in the GUI.
 - The minimum `Wait` granularity is 1/16 second (one game tick). Shorter waits
   are silently rounded up.
+- `Wait` with `c_timeGame` pauses during cinematic / dialog; use `c_timeReal`
+  for real-time pacing regardless of game state.
+- `TriggerExecute` is synchronous and runs in the calling thread; it does not
+  fork a new thread. Use `TriggerCreate` + event attachment for async behavior.
+- Trigger functions return `bool`; returning `false` from `testConds=true` call
+  aborts the action list without running it.
 
 ## Categories and libraries
 
@@ -71,3 +148,4 @@ explicitly sequenced via `TriggerEnable` / `TriggerExecute`.
 - `galaxy/syntax.md`
 - `editor/editor-overview.md` §5
 - `runtime-contracts/observer.md`
+- `coop/commander-framework.md` (Co-op commander library pattern)

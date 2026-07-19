@@ -17,6 +17,14 @@ for the per-file inventory.
 | `runtime-contracts/observer.md` | Newly written for this knowledge base. | Project-internal. | 2026-07-19. |
 | `actor/system.md` | Newly written for this knowledge base. | Project-internal. | 2026-07-19. |
 | `requirement/system.md` | Newly written for this knowledge base. | Project-internal. | 2026-07-19. |
+| `coop/commander-framework.md` | Newly written for this knowledge base, references Blizzard LibCOOC/LibCOMU/LibCOMI/LibCOUI. | Project-internal. | 2026-07-19. |
+| `mutator/system.md` | Newly written for this knowledge base, references Blizzard mutator mods. | Project-internal. | 2026-07-19. |
+| `cutscene/system.md` | Newly written for this knowledge base, references Blizzard Cutscene/Transmission/Conversation natives. | Project-internal. | 2026-07-19. |
+| `sound/system.md` | Newly written for this knowledge base, references Blizzard Sound/Soundtrack/VoiceOver natives. | Project-internal. | 2026-07-19. |
+| `hero-talent/system.md` | Newly written for this knowledge base, references Blizzard CHero/CTalent/CHeroAbil/CHeroStat. | Project-internal. | 2026-07-19. |
+| `campaign/system.md` | Newly written for this knowledge base, references Blizzard CCampaign/CCharacter/CLocation/CObjective and LibCOMI. | Project-internal. | 2026-07-19. |
+| `multiplayer/sync.md` | Newly written for this knowledge base, references Blizzard sync/time/bank natives. | Project-internal. | 2026-07-19. |
+| `performance/tuning.md` | Newly written for this knowledge base, synthesizes project lessons learned. | Project-internal. | 2026-07-19. |
 | `editor/editor-overview.md` | `合作指挥官-起义狂潮/docs/银河编辑器/银河编辑器使用教程汇总.md` (originally aggregated from 灰机wiki, 百度百科, 百度贴吧 GEBC, GitHub StarCraft-II-Editor-learning, s2editor-guides.readthedocs.io) | Community summary; redistribute with attribution. | 2026-06-28 (original); 2026-07-19 (migrated). |
 | `editor/ai-development-guide.md` | `合作指挥官-起义狂潮/docs/银河编辑器/AI开发Mod指南.md` | Project-internal. | 2026-07-19. |
 | `galaxy/syntax.md` | Newly written for this knowledge base. | Project-internal. | 2026-07-19. |
