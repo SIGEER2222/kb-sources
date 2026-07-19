@@ -3,7 +3,10 @@
 | File | Origin | License | Retrieved |
 |------|--------|---------|-----------|
 | `format.md` | Newly written for this knowledge base. | Project-internal. | 2026-07-19. |
-| `fields-reference.md` | Newly written, references Blizzard XML. | Project-internal. | 2026-07-19. |
+| `fields-reference.md` | Newly written, references Blizzard XML. Expanded to all 105 catalog scopes. | Project-internal. | 2026-07-19. |
+| `effects.md` | Newly written, references Blizzard CEffect catalog. | Project-internal. | 2026-07-19. |
+| `validators.md` | Newly written, references Blizzard CValidator catalog. | Project-internal. | 2026-07-19. |
+| `targeting.md` | Newly written, references Blizzard CTargetFind/CTargetSort catalog. | Project-internal. | 2026-07-19. |
 
 ## Blizzard reference files
 

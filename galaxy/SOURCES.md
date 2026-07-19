@@ -9,6 +9,7 @@
 | `hotkeys-sample.galaxy` | `docs/galaxy/hotkeys.galaxy` | Project-internal sample. | 2026-07-19. |
 | `syntax.md` | Newly written for this knowledge base. | Project-internal. | 2026-07-19. |
 | `natives-reference.md` | Newly written for this knowledge base (curated subset). | Project-internal. | 2026-07-19. |
+| `native-index.md` | Newly written for this knowledge base (per-category index of ~1500 natives). | Project-internal. | 2026-07-19. |
 
 ## Blizzard reference files
 
