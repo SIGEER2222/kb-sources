@@ -507,3 +507,59 @@ git clone https://github.com/SC2Mapster/SC2GameData.git
 ---
 
 > 注：本索引整理自 SC2Mapster GitHub 组织公开信息，部分仓库已归档但仍有参考价值。开发时优先使用项目本地的数据和工具。
+
+---
+
+## 十一、CurseForge / SC2Mapster 素材资源库（模型与地图下载）
+
+> **入口**：https://www.curseforge.com/sc2 （实际跳转至 https://www.sc2mapster.com/sc2）
+> **用途**：后续若需要 3D 模型、贴图、kitbash 素材或参考地图，从这里下载
+> **收录规模**：2,335 Projects（持续更新）
+> **记录时间**：2026-07-23
+
+### 11.1 站点结构
+
+CurseForge SC2 频道是 SC2Mapster 的官方下载站，所有 mod 100% 免费下载。内容分两大类：
+
+| 分类 | 说明 | 浏览入口 |
+|------|------|----------|
+| **Assets**（素材） | 3D 模型、贴图、kitbash 资源、工具脚本，供 modder 二次使用 | https://www.sc2mapster.com/sc2/search?class=assets |
+| **Maps**（地图） | 自定义战役、塔防、基地防守等可玩地图 | https://www.sc2mapster.com/sc2/search?class=maps |
+
+### 11.2 热门素材清单（按下载量排序，Assets）
+
+| 项目 | 作者 | 下载量 | 类型 | 最近更新 |
+|------|------|--------|------|----------|
+| [DaveSpectre's Assets](https://www.sc2mapster.com/sc2/assets/davespectres-assets) | DaveTheSpectre | 1.1M | 重贴图 + Kitbash | 2026-07-22 |
+| [Taylor Mouse's Assets](https://www.sc2mapster.com/sc2/assets/taylor-mouses-stuff) | MouseTaylor | 177.0K | 模型/查看器/教程/脚本 | 2022-02-19 |
+| [Ghostnova's Mods](https://www.sc2mapster.com/sc2/assets/ghostnovas-mods) | ghostnova91 | 117.1K | 模型/贴图/地图 | 2020-09-26 |
+| [Starcraft 2 - Terran Military Organizations](https://www.sc2mapster.com/sc2/assets/terran-organization-units) | HammerTheTank107 | 81.8K | 人族阵营单位模型 | 2019-01-06 |
+| [Hammer's Assets](https://www.sc2mapster.com/sc2/assets/hammers-assets) | HammerTheTank107 | 64.9K | 模型包 | 2018-12-27 |
+| [Thrikodias's Assets](https://www.sc2mapster.com/sc2/assets/thrikodias-assets) | thrikodias | 63.9K | Kitbash 模型与贴图 | 2016-09-13 |
+| [Protoss Factions Units](https://www.sc2mapster.com/sc2/assets/protoss-texture-variations) | HammerTheTank107 | 54.4K | 星灵阵营单位模型 | 2018-10-11 |
+| [Dow 40k Units](https://www.sc2mapster.com/sc2/assets/dow-units) | deadlyxtrips | 30.5K | 战锤 40K 单位模型 | 2021-07-10 |
+| [SC: Evolution Complete for Creators](https://www.sc2mapster.com/sc2/assets/sc-evolution-complete-for-creators) | KopruluKat | 9.6K | SCBW 风格素材与工具 | 2025-02-09 |
+| [Comrade Mikhail's project](https://www.sc2mapster.com/sc2/assets/m-project) | Comrade_Mikhail | 5.4K | 个人原创模型 | 2026-07-08 |
+
+### 11.3 热门地图清单（按下载量排序，Maps）
+
+| 项目 | 作者 | 下载量 | 类型 |
+|------|------|--------|------|
+| [Starcraft: Mass Recall](https://www.sc2mapster.com/sc2/maps/starcraft-mass-recall) | karlprojektorinski | 2.8M | SC1 战役 SC2 重制 |
+| [StarCraft II: Annihilation Campaign](https://www.sc2mapster.com/sc2/maps/starcraft-ii-annihilation-campaign) | thedodo1995 | 101.9K | 自定义战役 |
+| [Wings of Liberty: Human Edition](https://www.sc2mapster.com/sc2/maps/wings-of-liberty-human-edition) | nikonpl123 | 91.5K | 战役（魔兽人类版） |
+| [Campaign The Dark Story](https://www.sc2mapster.com/sc2/maps/campaign-the-dark-story) | Zeralan | 80.8K | 自定义战役三部曲 |
+| [Standard Tower Defense](https://www.sc2mapster.com/sc2/maps/standard-tower-defense) | - | 64.1K | 塔防 |
+| [UED: First Light](https://www.sc2mapster.com/sc2/maps/ued-first-light) | TheOracle_NC | 61.8K | 自定义战役 |
+| [Starcraft 2: Odyssey Campaign](https://www.sc2mapster.com/sc2/maps/starcraft-2-odyssey-campaign) | CooperHawkesOdyssey | 42.6K | 自定义战役 |
+| [Hurricane Shrine (AoS)](https://www.sc2mapster.com/sc2/maps/homspointzeroonebeta) | - | 42.3K | 基地防守 |
+| [Starcraft: Evolution Complete](https://www.sc2mapster.com/sc2/maps/starcraft-evolution-complete) | KopruluKat | 34.7K | 战役重制 |
+
+### 11.4 使用建议
+
+- **首选参考**：DaveSpectre's Assets（下载量 1.1M，2026-07 仍在更新，含大量 Retexture 和 Kitbash，是最活跃的素材源）
+- **模型查看/脚本**：Taylor Mouse's Assets 内置模型查看器和工具脚本，便于检查模型结构
+- **阵营单位**：HammerTheTank107 的 Terran Military Organizations 和 Protoss Factions Units 提供按阵营分类的单位模型
+- **跨游戏素材**：Dow 40k Units 提供战锤 40K 风格单位，适合做特殊主题 mod
+- **下载方式**：每个项目页有 Download 按钮直接下载 .SC2Mod / .SC2Map 压缩包，无需登录
+- **配合工具**：下载后用 m3addon（见 5.1 节）在 Blender 中导入/编辑 M3 模型，或用 stormex（见 7.1 节）解包
