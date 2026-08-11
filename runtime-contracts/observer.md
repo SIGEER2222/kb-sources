@@ -38,6 +38,50 @@ typical readiness check combines:
   after launch).
 - The expected map-script init events fired (e.g. `MapInit` -> `InitMap`).
 
+### CMRE initialization ordering trap
+
+For CMRE maps, API reachability, `runtime_listener_ready`, and an advancing
+bridge heartbeat are not sufficient to issue actions. The map can still be in
+the asynchronous commander/startup path while the listener is alive. In that
+window, the map's `PreventDefeat` checks may see no starting building and end
+the mission before later Vibe actions have any meaning.
+
+The action gate must therefore wait for a map-owned `CMRERebornDebug` contract:
+
+- `map_init_entered=1` and `startup_dev_finish=1`;
+- `runtime_listener_started=1`, `runtime_listener_ready=1`, and a positive
+  `bridge_heartbeat`;
+- `initialization_building_ready_p1/p2=1` and
+  `initialization_units_ready_p1/p2=1`;
+- `initialization_complete=1`, observed stably, with
+  `world_cover_dialog_visible_p1=0`;
+- the same-window GameLogs ScriptError diff is empty.
+
+The map gate derives the building and worker checks from the launch profile and
+handles the extra Reborn Zerg SwarmSetup phase before writing
+`initialization_complete`. In non-realtime API sessions, the host must issue
+`RequestStep` while waiting; wall-clock sleep alone leaves Galaxy `Wait` and
+BankPoll triggers frozen.
+
+This is a runtime contract, not a simulator assumption. A launcher or host that
+only checks the port, listener, or heartbeat must treat the session as not ready
+and must not send Vibe actions.
+
+### Native starting-unit preservation rule
+
+If a CMRE map already owns its starting base and workers, the generic adapter
+must observe those units rather than remove or recreate them. The launch profile
+for that path must keep `CreateStartingUnitsP1/P2=0`,
+`EnsurePreventDefeatP1/P2=0`, and `VanillaRemovalCount=0`; otherwise the map's
+`PreventDefeat` check can see the original base disappear and end the mission
+before Vibe actions begin.
+
+The runtime evidence must query the actual catalog ids after the initialization
+gate. A successful API connection or a positive heartbeat is not evidence that
+the native base survived. In the Stage 18 preservation run, the same-window
+packed-map observation recorded `CommandCenter=1`, `SCV=12`, all replacement
+flags at zero, and a six-step task loop pass.
+
 ## ScriptError scanning
 
 SC2 writes ScriptError files to `Documents/StarCraft II/GameLogs/` with a
